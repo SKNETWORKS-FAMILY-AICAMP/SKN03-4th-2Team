@@ -19,6 +19,12 @@ embedding_file = "C:/Users/owner/Desktop/LLM miniproject/langGraphChatbot/data/e
 faiss_index_file = "C:/Users/owner/Desktop/LLM miniproject/langGraphChatbot/data/faiss_index.pkl"
 
 # 상태 타입 정의
+# 그래프 노드들 간에 전달될 데이터 쿠고
+# query : 사용자의 질문
+# similar_texts : 유사한 텍스트 리스트
+# answer : 생성된 답변
+# index : FAISS 인덱스 객체
+
 class State(TypedDict):
     query: Optional[str]
     similar_texts: Optional[List[str]]
@@ -26,11 +32,17 @@ class State(TypedDict):
     index: Optional[faiss.IndexFlatL2]
 
 # 데이터 로드 및 임베딩 모델 초기화
+# 새로운 열의 생성 : 아티스트 : 아티스트 이름,  트랙 : 트랙 이름, 장르 : 장르, 가사 : 가사의 형태로 텍스트 결합
+# 텍스트를 벡터로 변환
 data = pd.read_csv(file_path)
 data['combined_text'] = data.apply(lambda row: f"Artist: {row['artist_name']}, Track: {row['track_name']}, Genre: {row['genre']}, Lyrics: {row['lyrics']}", axis=1)
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # 임베딩 생성 노드
+# 임베딩을 생성하고 FAISS 인덱스를 구축한다. 
+# 임베딩 파일이 존재할 경우 로드, 없응ㄹ 경우 변환 후 .npy 파일에 저장
+# 임베딩 차원 크기를 구하고 FAISS 인덱스 파일의 로드, 없을 경우 인덱스 생성, 임베딩 추가
+# 최종적으로 state["index"] 에 인덱슬르 저장하고 반환한다.
 def create_embeddings(state: State) -> State:
     if os.path.exists(embedding_file):
         embeddings = np.load(embedding_file)
@@ -52,6 +64,9 @@ def create_embeddings(state: State) -> State:
     return state
 
 # 유사 문서 검색 노드
+# 사용자의 질문, query 를 받아 유사한 문서를 검색한다.
+# query 를 임베딩 벡터로 변환, index 를 사용해 유사한 문서 3개 검색
+# 검색 결과의 state['similar_texts"] 에 저장됨
 def search_similar_documents(state: State) -> State:
     query = state["query"]
     query_embedding = embedding_model.encode([query])
@@ -62,6 +77,8 @@ def search_similar_documents(state: State) -> State:
     return state
 
 # 답변 생성 노드
+# query, similar_texts 를 사용해 프롬프트의 작성
+# OpenAI 모델을 호출하여 답변 생성, state["answer"] 에 저장
 def generate_answer(state: State) -> State:
     query = state["query"]
     similar_texts = state["similar_texts"]
@@ -82,7 +99,7 @@ def generate_answer(state: State) -> State:
     print(state, "확인하기")
     return state
 
-# 그래프 생성 및 노드 추가
+# 그래프 생성 및 노드 추가ㅌㅌ
 graph = StateGraph(State)
 
 graph.add_node("create_embeddings", create_embeddings)
