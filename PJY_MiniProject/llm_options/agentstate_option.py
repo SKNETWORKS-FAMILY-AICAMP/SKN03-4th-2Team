@@ -1,9 +1,9 @@
 from typing import TypedDict, Annotated, Union
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.messages import BaseMessage
+from langchain.agents import AgentExecutor
 import operator
 
-# GraphState - 각 노드가 수행한 작업들을 기억(상태 기록)하는 기능
 class AgentState(TypedDict):
     input: str
     # 대화 내용 중 '이전 메시지' 목록

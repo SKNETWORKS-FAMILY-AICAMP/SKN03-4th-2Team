@@ -5,7 +5,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain.tools.retriever import create_retriever_tool
 
 def get_retriever_tool():
-    file_path = "C:\dev\github\SKN03-4th-2Team\SKN03-4th-2Team\PJY_MiniProject\다이어트.txt"
+    file_path = "C:\dev\github\SKN03-4th-2Team\SKN03-4th-2Team\PJY_MiniProject\data\다이어트.txt"
     # 파일의 경로 입력
     loader = TextLoader(file_path, encoding='utf-8')
     # 텍스트 분할기를 사용하여 문서를 분할합니다.
