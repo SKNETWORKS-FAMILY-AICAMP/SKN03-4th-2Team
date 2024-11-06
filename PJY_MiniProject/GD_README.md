@@ -31,10 +31,10 @@
 ```
 
 ## 그래프 구조 
-![LangGraph](PJY_MiniProject/images/langgraph.png)
+![LangGraph](images/langgraph.png)
 
 
 ## 실행 사진 
-![image](PJY_MiniProject/images/다이어트챗봇_결과사진_1.png)
+![image](images/다이어트챗봇_결과사진_1.png)
 
-![image2](PJY_MiniProject/images/다이어트챗봇_결과사진_2.png)
+![image2](images/다이어트챗봇_결과사진_2.png)
