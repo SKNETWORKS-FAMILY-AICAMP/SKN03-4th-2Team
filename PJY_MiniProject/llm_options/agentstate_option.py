@@ -1,7 +1,6 @@
 from typing import TypedDict, Annotated, Union
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.messages import BaseMessage
-from langchain.agents import AgentExecutor
 import operator
 
 class AgentState(TypedDict):
