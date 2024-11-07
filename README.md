@@ -14,20 +14,6 @@
 
 <br/>
 
-### ✔️ 수행결과 ###
-
-1. 출발지와 목적지 입력 시 호선 및 환승 루트 제공
-  <img src="https://github.com/user-attachments/assets/41ddf1cf-87a2-4e0f-94a1-ef0a32efb7d8"/>
-  
-<br/>
-<br/>
-
-2. 소요시간과 요금 추가 정보 제공
-  <img src="https://github.com/user-attachments/assets/736fe0f1-b2e6-46a6-af15-515187dfe0a7"/>
-  
-<br/>
-<br/>
-
 ### ⛓️ Lang Graph Display ###
 - Agent에서 tool 실행
 - Conditional Edge 구
@@ -40,6 +26,20 @@
 ### 🏗️ Architecture  ###
    <img src="https://github.com/user-attachments/assets/92abc0ca-9dc8-4b47-8de9-0941fc0a5ff9"/>
 
+<br/>
+<br/>
+
+### ✔️ 수행결과 ###
+
+1. 출발지와 목적지 입력 시 호선 및 환승 루트 제공
+  <img src="https://github.com/user-attachments/assets/41ddf1cf-87a2-4e0f-94a1-ef0a32efb7d8"/>
+  
+<br/>
+<br/>
+
+2. 소요시간과 요금 추가 정보 제공
+  <img src="https://github.com/user-attachments/assets/736fe0f1-b2e6-46a6-af15-515187dfe0a7"/>
+  
 <br/>
 <br/>
 
